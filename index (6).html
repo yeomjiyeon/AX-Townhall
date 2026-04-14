@@ -1,0 +1,1034 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>F&F AX Townhall — Overview</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;900&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f5f7fa;
+    --surface: #ffffff;
+    --surface-alt: #f0f2f5;
+    --border: rgba(0,0,0,0.07);
+    --text: #1a1f2e;
+    --text-sub: #4b5563;
+    --text-dim: #9ca3af;
+    --accent: #2563eb;
+    --accent-glow: rgba(37,99,235,0.08);
+    --gold: #d97706;
+    --gold-glow: rgba(217,119,6,0.08);
+    --emerald: #059669;
+    --emerald-glow: rgba(5,150,105,0.08);
+    --purple: #7c3aed;
+    --purple-glow: rgba(124,58,237,0.08);
+    --coral: #ea580c;
+    --coral-glow: rgba(234,88,12,0.08);
+    --radius: 16px;
+    --radius-sm: 10px;
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    font-family: 'Noto Sans KR', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* === HEADER === */
+  .header {
+    position: relative;
+    padding: 56px 48px 48px;
+    background: linear-gradient(135deg, #1a2d5a 0%, #243b6e 40%, #2e4a82 70%, #3a5a96 100%);
+    border-bottom: 1px solid var(--border);
+    overflow: hidden;
+  }
+  .header::before {
+    content: '';
+    position: absolute;
+    top: -60%;
+    right: -10%;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .header::after {
+    content: '';
+    position: absolute;
+    bottom: -40%;
+    left: 10%;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(255,255,255,0.06) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .header-top {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 10px;
+    position: relative;
+  }
+  .header-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 14px;
+    background: rgba(255,255,255,0.2);
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 100px;
+    font-size: 11px;
+    font-weight: 600;
+    color: #fff;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+  }
+  .header-badge::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    background: #fff;
+    border-radius: 50%;
+    animation: pulse 2s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 0.5; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.3); }
+  }
+  .header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 42px;
+    font-weight: 900;
+    letter-spacing: -0.5px;
+    line-height: 1.15;
+    position: relative;
+    color: #fff;
+    background: none;
+    -webkit-background-clip: unset;
+    -webkit-text-fill-color: unset;
+  }
+  .header-sub {
+    font-size: 15px;
+    color: rgba(255,255,255,0.8);
+    margin-top: 8px;
+    font-weight: 400;
+    letter-spacing: 0.3px;
+  }
+  .header-sub em {
+    color: #fff;
+    font-style: normal;
+    font-weight: 600;
+  }
+  .header-meta {
+    display: flex;
+    gap: 32px;
+    margin-top: 28px;
+    position: relative;
+  }
+  .meta-item {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .meta-label {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: rgba(255,255,255,0.55);
+    font-weight: 500;
+  }
+  .meta-value {
+    font-size: 14px;
+    font-weight: 600;
+    color: #fff;
+  }
+
+  /* === CONTAINER === */
+  .container {
+    max-width: 1320px;
+    margin: 0 auto;
+    padding: 40px 48px 64px;
+  }
+
+  /* === SECTION LABEL === */
+  .sec-label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    margin-top: 48px;
+  }
+  .sec-label:first-child { margin-top: 0; }
+  .sec-num {
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--accent-glow);
+    border: 1px solid rgba(59,130,246,0.2);
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--accent);
+  }
+  .sec-title {
+    font-size: 16px;
+    font-weight: 700;
+    text-transform: none;
+    letter-spacing: 0;
+    color: #374151;
+  }
+
+  /* === KPI STRIP === */
+  .kpi-strip {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+  }
+  .kpi-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 24px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.2s, border-color 0.2s;
+  }
+  .kpi-card:hover {
+    transform: translateY(-2px);
+    border-color: rgba(255,255,255,0.1);
+  }
+  .kpi-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+  }
+  .kpi-card:nth-child(1)::before { background: var(--accent); }
+  .kpi-card:nth-child(2)::before { background: var(--gold); }
+  .kpi-card:nth-child(3)::before { background: var(--emerald); }
+  .kpi-card:nth-child(4)::before { background: var(--purple); }
+  .kpi-icon {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    font-size: 18px;
+    margin-bottom: 14px;
+  }
+  .kpi-card:nth-child(1) .kpi-icon { background: var(--accent-glow); }
+  .kpi-card:nth-child(2) .kpi-icon { background: var(--gold-glow); }
+  .kpi-card:nth-child(3) .kpi-icon { background: var(--emerald-glow); }
+  .kpi-card:nth-child(4) .kpi-icon { background: var(--purple-glow); }
+  .kpi-label {
+    font-size: 11px;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+  .kpi-number {
+    font-size: 32px;
+    font-weight: 900;
+    letter-spacing: -1px;
+    line-height: 1;
+  }
+  .kpi-card:nth-child(1) .kpi-number { color: var(--accent); }
+  .kpi-card:nth-child(2) .kpi-number { color: var(--gold); }
+  .kpi-card:nth-child(3) .kpi-number { color: var(--emerald); }
+  .kpi-card:nth-child(4) .kpi-number { color: var(--purple); }
+  .kpi-unit {
+    font-size: 14px;
+    font-weight: 500;
+    margin-left: 2px;
+  }
+  .kpi-desc {
+    font-size: 12px;
+    color: var(--text-dim);
+    margin-top: 8px;
+    line-height: 1.5;
+  }
+
+  /* === PURPOSE === */
+  .purpose-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+  .purpose-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 24px 28px;
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    transition: border-color 0.2s;
+  }
+  .purpose-card:hover { border-color: rgba(255,255,255,0.1); }
+  .purpose-icon {
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--surface-alt);
+    border-radius: 10px;
+    font-size: 20px;
+  }
+  .purpose-text h4 {
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 5px;
+    color: var(--text);
+  }
+  .purpose-text p {
+    font-size: 13px;
+    color: var(--text-sub);
+    line-height: 1.6;
+  }
+
+  /* === PROGRAM TABLE === */
+  .program-table {
+    width: 100%;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+  }
+  .program-table table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  .program-table thead th {
+    padding: 14px 24px;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--text-dim);
+    font-weight: 600;
+    text-align: left;
+    background: var(--surface-alt);
+    border-bottom: 1px solid var(--border);
+  }
+  .program-table tbody td {
+    padding: 18px 24px;
+    font-size: 14px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: middle;
+  }
+  .program-table tbody tr:last-child td { border-bottom: none; }
+  .program-table tbody tr:hover { background: rgba(0,0,0,0.02); }
+  .prog-agenda {
+    font-weight: 700;
+    color: var(--text);
+  }
+  .prog-time {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 12px;
+    background: var(--accent-glow);
+    border-radius: 100px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--accent);
+  }
+  .prog-speaker {
+    color: var(--text-sub);
+    font-weight: 500;
+  }
+  .prog-detail {
+    color: var(--text-dim);
+    font-size: 13px;
+    line-height: 1.5;
+  }
+  .prog-info {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-sub);
+    margin-bottom: 16px;
+    padding: 12px 20px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    display: inline-block;
+  }
+  .overview-info-strip {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+  .overview-info-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 20px 24px;
+    transition: border-color 0.2s;
+  }
+  .overview-info-card:hover { border-color: rgba(0,0,0,0.12); }
+  .overview-info-icon {
+    font-size: 20px;
+    margin-bottom: 8px;
+  }
+  .overview-info-label {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--text-dim);
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+  .overview-info-value {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1.5;
+  }
+  .prog-highlight {
+    background: #fff8f0;
+    outline: 2px solid #e67e22;
+    outline-offset: -2px;
+  }
+  .prog-highlight td {
+    border-bottom: 1px solid rgba(230,126,34,0.15);
+  }
+  .prog-time-main {
+    background: rgba(230,126,34,0.12) !important;
+    color: #d35400 !important;
+    font-weight: 700 !important;
+  }
+  .menu-card {
+    margin-top: 16px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 24px;
+  }
+  .lunch-note {
+    margin-top: 10px;
+    font-size: 12px;
+    color: var(--accent);
+    font-weight: 500;
+    font-style: italic;
+  }
+  .lunch-box-note {
+    margin-top: 10px;
+    font-size: 12px;
+    color: #2e4a82;
+    font-weight: 600;
+    padding: 8px 12px;
+    border: 1.5px solid rgba(46,74,130,0.3);
+    border-radius: 6px;
+    background: rgba(46,74,130,0.05);
+    display: inline-block;
+  }
+  .lunch-img {
+    margin-top: 10px;
+    width: 200px;
+    border-radius: 8px;
+  }
+  .menu-header {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .menu-note {
+    font-size: 12px;
+    font-weight: 400;
+    color: var(--text-dim);
+  }
+  .menu-layout {
+    display: flex;
+    gap: 24px;
+    align-items: center;
+  }
+  .menu-img {
+    width: 180px;
+    height: 180px;
+    object-fit: cover;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border);
+    flex-shrink: 0;
+  }
+  .menu-desc {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .menu-desc-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+    color: var(--text-sub);
+    font-weight: 500;
+  }
+  .menu-tag {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 48px;
+    padding: 3px 10px;
+    background: var(--surface-alt);
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--text-dim);
+  }
+
+  /* === TIMELINE === */
+  .timeline-container {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 40px 32px 36px;
+    position: relative;
+    overflow: hidden;
+  }
+  .timeline-container::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 64px;
+    background: var(--surface-alt);
+    border-top: 1px solid var(--border);
+  }
+  .timeline-quote {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding: 12px 40px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-sub);
+    font-style: italic;
+    letter-spacing: 0.2px;
+  }
+  .timeline-track {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    position: relative;
+    padding-bottom: 20px;
+  }
+  .timeline-line {
+    position: absolute;
+    top: 40px;
+    left: 12.5%;
+    right: 12.5%;
+    height: 2px;
+    background: linear-gradient(90deg, var(--accent) 0%, var(--gold) 33%, var(--emerald) 66%, var(--purple) 100%);
+    opacity: 0.3;
+  }
+  .tl-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+  }
+  .tl-month {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--text-dim);
+    font-weight: 600;
+    margin-bottom: 10px;
+    min-height: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+  }
+  .tl-dot {
+    width: 48px;
+    height: 48px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    font-weight: 900;
+    color: #fff;
+    margin-bottom: 16px;
+    position: relative;
+    z-index: 2;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+  }
+  .tl-item:nth-child(2) .tl-dot { background: linear-gradient(135deg, #4a7ab5, #3a6aa0); }
+  .tl-item:nth-child(3) .tl-dot { background: linear-gradient(135deg, #e67e22, #d35400); animation: dotPulse 2s ease-in-out infinite; }
+  @keyframes dotPulse {
+    0%, 100% { box-shadow: 0 4px 20px rgba(230,126,34,0.4); }
+    50% { box-shadow: 0 4px 30px rgba(230,126,34,0.7), 0 0 10px rgba(230,126,34,0.3); }
+  }
+  .tl-item:nth-child(4) .tl-dot { background: linear-gradient(135deg, #4a7ab5, #3a6aa0); }
+  .tl-item:nth-child(5) .tl-dot { background: linear-gradient(135deg, #4a7ab5, #3a6aa0); }
+  .tl-card {
+    background: var(--surface-alt);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 16px;
+    width: 100%;
+    max-width: 240px;
+    min-height: 180px;
+    display: flex;
+    flex-direction: column;
+  }
+  .tl-card-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 8px;
+    text-align: center;
+  }
+  .tl-card-items {
+    list-style: none;
+    padding: 0;
+    flex: 1;
+  }
+  .tl-card-items li {
+    font-size: 12px;
+    color: var(--text-sub);
+    padding: 4px 0;
+    padding-left: 12px;
+    position: relative;
+    line-height: 1.5;
+  }
+  .tl-card-items li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 10px;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--text-dim);
+  }
+  .tl-phase {
+    margin-top: auto;
+    text-align: center;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 5px 14px;
+    border-radius: 100px;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .tl-item:nth-child(2) .tl-phase { color: var(--accent); background: var(--accent-glow); }
+  .tl-item:nth-child(3) .tl-phase { color: var(--gold); background: var(--gold-glow); }
+  .tl-item:nth-child(4) .tl-phase { color: var(--emerald); background: var(--emerald-glow); }
+  .tl-item:nth-child(5) .tl-phase { color: var(--purple); background: var(--purple-glow); }
+
+  /* === NEXT HIGHLIGHT === */
+  .next-card {
+    background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
+    border: 1px solid rgba(245,158,11,0.2);
+    border-radius: var(--radius);
+    padding: 32px 36px;
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    position: relative;
+    overflow: hidden;
+  }
+  .next-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 4px;
+    background: linear-gradient(180deg, var(--gold), var(--coral));
+  }
+  .next-card::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -5%;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(245,158,11,0.05) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .next-icon {
+    width: 64px;
+    height: 64px;
+    min-width: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--gold-glow);
+    border: 1px solid rgba(245,158,11,0.2);
+    border-radius: 16px;
+    font-size: 28px;
+  }
+  .next-content {
+    flex: 1;
+    position: relative;
+  }
+  .next-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--gold);
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+  .next-title {
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--text);
+    margin-bottom: 4px;
+  }
+  .next-desc {
+    font-size: 13px;
+    color: var(--text-sub);
+    line-height: 1.6;
+  }
+  .next-date {
+    min-width: 120px;
+    text-align: center;
+    position: relative;
+  }
+  .next-date-month {
+    font-size: 12px;
+    color: var(--gold);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+  }
+  .next-date-day {
+    font-size: 48px;
+    font-weight: 900;
+    color: var(--text);
+    line-height: 1;
+    margin: 4px 0;
+  }
+  .next-date-dow {
+    font-size: 12px;
+    color: var(--text-dim);
+    font-weight: 500;
+  }
+
+  /* === FOOTER === */
+  .footer {
+    text-align: center;
+    padding: 32px 48px;
+    border-top: 1px solid var(--border);
+    background: var(--surface);
+  }
+  .footer-text {
+    font-size: 12px;
+    color: var(--text-dim);
+    letter-spacing: 0.5px;
+  }
+  .footer-text em {
+    color: var(--text-sub);
+    font-style: normal;
+    font-weight: 500;
+  }
+
+  /* === CURRENT MARKER === */
+  .current-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 3px 10px;
+    background: linear-gradient(135deg, #e67e22, #f39c12, #e67e22);
+    background-size: 200% 200%;
+    animation: badgeShimmer 2s ease-in-out infinite;
+    border: none;
+    border-radius: 100px;
+    font-size: 10px;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: 0.5px;
+    margin-left: 8px;
+    box-shadow: 0 0 8px rgba(230,126,34,0.4);
+  }
+  .current-badge::before {
+    content: '';
+    width: 5px;
+    height: 5px;
+    background: #fff;
+    border-radius: 50%;
+    animation: pulse 1.5s ease-in-out infinite;
+  }
+  @keyframes badgeShimmer {
+    0%, 100% { background-position: 0% 50%; box-shadow: 0 0 8px rgba(230,126,34,0.4); }
+    50% { background-position: 100% 50%; box-shadow: 0 0 16px rgba(230,126,34,0.6); }
+  }
+
+  /* === 4월 카드 반짝이 효과 === */
+  .tl-card-upcoming {
+    position: relative;
+    overflow: hidden;
+    animation: cardGlow 3s ease-in-out infinite;
+  }
+  .tl-card-upcoming::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -60%;
+    width: 40%;
+    height: 200%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+    transform: skewX(-20deg);
+    animation: shimmer 4s ease-in-out infinite;
+  }
+  @keyframes shimmer {
+    0%, 100% { left: -60%; }
+    50% { left: 120%; }
+  }
+  @keyframes cardGlow {
+    0%, 100% { box-shadow: 0 0 0 rgba(230,126,34,0); }
+    50% { box-shadow: 0 0 20px rgba(230,126,34,0.15); }
+  }
+
+  /* === RESPONSIVE === */
+  @media (max-width: 900px) {
+    .header { padding: 36px 24px 32px; }
+    .container { padding: 24px; }
+    .header h1 { font-size: 28px; }
+    .kpi-strip { grid-template-columns: repeat(2, 1fr); }
+    .purpose-grid { grid-template-columns: 1fr; }
+    .timeline-track { grid-template-columns: 1fr; gap: 20px; }
+    .timeline-line { display: none; }
+    .header-meta { gap: 16px; flex-wrap: wrap; }
+    .next-card { flex-direction: column; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="header-top">
+    <div class="header-badge">Executive Overview</div>
+  </div>
+  <h1>F<span style="font-family:Arial,sans-serif">&</span>F AX Townhall</h1>
+  <div class="header-sub">회장님과 함께하는 임직원 AX 간담회 · 2026</div>
+</div>
+
+<div class="container">
+
+  <!-- 01. TIMELINE (로드맵을 맨 위로) -->
+  <div class="sec-label">
+    <div class="sec-num">01</div>
+    <div class="sec-title">2026 AX 정례 간담회 연간 로드맵</div>
+  </div>
+  <div class="timeline-container">
+    <div class="timeline-track">
+      <div class="timeline-line"></div>
+      <div class="tl-item">
+        <div class="tl-month">January</div>
+        <div class="tl-dot">1</div>
+        <div class="tl-card">
+          <div class="tl-card-title">신년 간담회</div>
+          <ul class="tl-card-items">
+            <li>2026년 AX 비전 선포</li>
+            <li>AX 우수 사례 공유</li>
+            <li>F&amp;F AX 비전 토론</li>
+          </ul>
+          <div style="text-align:center;margin-top:8px;">
+            <span class="tl-phase">🤖 Vision Setting</span>
+          </div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-month">April 23 <span class="current-badge">UPCOMING</span></div>
+        <div class="tl-dot">4</div>
+        <div class="tl-card tl-card-upcoming" style="border: 2px solid #e67e22; background: #fff3e0;">
+          <div class="tl-card-title" style="color: #d35400;">상반기 간담회</div>
+          <ul class="tl-card-items">
+            <li>F&amp;F AX Update</li>
+            <li>AX Insight 공유</li>
+            <li>AX 우수 사례 공유</li>
+          </ul>
+          <div style="text-align:center;margin-top:8px;">
+            <span class="tl-phase">📊 Progress Review</span>
+          </div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-month">August</div>
+        <div class="tl-dot">8</div>
+        <div class="tl-card">
+          <div class="tl-card-title">하반기 간담회</div>
+          <ul class="tl-card-items">
+            <li>F&amp;F AX Update</li>
+            <li>AX Insight 공유</li>
+            <li>AX 우수 사례 공유</li>
+          </ul>
+          <div style="text-align:center;margin-top:8px;">
+            <span class="tl-phase">🚀 Acceleration</span>
+          </div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-month">November</div>
+        <div class="tl-dot">11</div>
+        <div class="tl-card">
+          <div class="tl-card-title">연말 간담회</div>
+          <ul class="tl-card-items">
+            <li>2026년 AX 성과 점검</li>
+            <li>2027년 AX 방향성 수립</li>
+            <li>임직원 성과 격려</li>
+          </ul>
+          <div style="text-align:center;margin-top:8px;">
+            <span class="tl-phase">🔄 Review &amp; Reset</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="timeline-quote">"AX를 통해 F&amp;F의 더 빠르고 강한 성장을 이끄는 분기별 정례 대화"</div>
+  </div>
+
+  <!-- 02. 상반기 간담회 OVERVIEW -->
+  <div class="sec-label">
+    <div class="sec-num">02</div>
+    <div class="sec-title">상반기 간담회 Overview</div>
+  </div>
+  <div class="overview-info-strip">
+    <div class="overview-info-card">
+      <div class="overview-info-icon">📅</div>
+      <div class="overview-info-label">일시</div>
+      <div class="overview-info-value">2026년 4월 23일 (목) 10:00 – 13:00</div>
+    </div>
+    <div class="overview-info-card">
+      <div class="overview-info-icon">📍</div>
+      <div class="overview-info-label">장소</div>
+      <div class="overview-info-value">본사 4층 FIND ROOM</div>
+    </div>
+    <div class="overview-info-card">
+      <div class="overview-info-icon">👥</div>
+      <div class="overview-info-label">참석자</div>
+      <div class="overview-info-value">70여명 · AX 커미티, AX 전략실, 신규입사자 등</div>
+    </div>
+  </div>
+  <div class="sec-label" style="margin-top:28px;">
+    <div class="sec-num" style="background:var(--accent-glow);color:var(--accent);border-color:rgba(37,99,235,0.2);">▶</div>
+    <div class="sec-title">프로그램</div>
+  </div>
+  <div class="program-table">
+    <table>
+      <thead>
+        <tr>
+          <th style="width:18%">시간</th>
+          <th style="width:14%">소요</th>
+          <th style="width:25%">아젠다</th>
+          <th style="width:18%">스피커</th>
+          <th>상세사항</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="prog-speaker">10:00 – 10:05</td>
+          <td><span class="prog-time">5분</span></td>
+          <td class="prog-agenda">간담회 오프닝</td>
+          <td class="prog-speaker">MC</td>
+          <td class="prog-detail">간담회의 시작을 알립니다</td>
+        </tr>
+        <tr class="prog-highlight">
+          <td class="prog-speaker">10:05 – 11:35</td>
+          <td><span class="prog-time prog-time-main">90분 · 핵심 세션</span></td>
+          <td class="prog-agenda">회장님 말씀</td>
+          <td class="prog-speaker">회장님</td>
+          <td class="prog-detail">F&amp;F의 AX 방향성과 비전, 그리고 우리의 다음 이야기를 직접 들을 수 있습니다</td>
+        </tr>
+        <tr>
+          <td class="prog-speaker">11:35 – 11:50</td>
+          <td><span class="prog-time">15분</span></td>
+          <td class="prog-agenda">Q&amp;A · 자유 토론</td>
+          <td class="prog-speaker">회장님 &amp; 참석자 전원</td>
+          <td class="prog-detail">회장님과 임직원들이 서로에게 궁금한 것을 자유롭게 질문하고 이야기 나누는 오픈형 토크 세션입니다</td>
+        </tr>
+        <tr>
+          <td class="prog-speaker">11:50 – 13:00</td>
+          <td><span class="prog-time">70분 · 도시락 제공</span></td>
+          <td class="prog-agenda">점심식사 &amp; 리더십 스몰톡</td>
+          <td class="prog-speaker">전원</td>
+          <td class="prog-detail">
+            간담회 이후 이어지는 식사 자리로, 회장님과 가까운 거리에서 편안하게 이야기를 나누며 런치를 즐기는 시간입니다
+            <div class="lunch-box-note">*점심식사 장소는 4층이며 메뉴는 도시락입니다</div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 03. PURPOSE -->
+  <div class="sec-label">
+    <div class="sec-num">03</div>
+    <div class="sec-title">Purpose & Expectation</div>
+  </div>
+  <div class="purpose-grid">
+    <div class="purpose-card">
+      <div class="purpose-icon">🔄</div>
+      <div class="purpose-text">
+        <h4>AX 메시지의 연중 내재화</h4>
+        <p>AX 메시지가 행사 당일로 끝나지 않고 연중 반복 노출되어 조직 내 내재화</p>
+      </div>
+    </div>
+    <div class="purpose-card">
+      <div class="purpose-icon">📈</div>
+      <div class="purpose-text">
+        <h4>AX 실행 성과의 조직 확산</h4>
+        <p>AX 프로젝트 담당자 중심으로 실행 성과가 조직 내 확산</p>
+      </div>
+    </div>
+    <div class="purpose-card">
+      <div class="purpose-icon">🚀</div>
+      <div class="purpose-text">
+        <h4>신규 입사자 온보딩 가속</h4>
+        <p>신규 입사자의 조직 적응/몰입 속도 향상</p>
+      </div>
+    </div>
+    <div class="purpose-card">
+      <div class="purpose-icon">💡</div>
+      <div class="purpose-text">
+        <h4>리더십 메시지의 경험화</h4>
+        <p>회장님 리더십 메시지가 "문장"이 아니라 "경험"으로 남아 조직의 동력과 자부심 강화</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">
+  <div class="footer-text"><em>F&F 2026 : Accelerating Growth with AI</em> · AX 정례 간담회 · 커뮤니케이션팀</div>
+</div>
+
+<script>
+function syncCardHeights() {
+  const cards = document.querySelectorAll('.tl-card');
+  cards.forEach(c => c.style.height = 'auto');
+  let max = 0;
+  cards.forEach(c => { if (c.offsetHeight > max) max = c.offsetHeight; });
+  cards.forEach(c => c.style.height = max + 'px');
+}
+window.addEventListener('load', syncCardHeights);
+window.addEventListener('resize', syncCardHeights);
+</script>
+</body>
+</html>
